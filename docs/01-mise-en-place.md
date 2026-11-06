@@ -333,14 +333,14 @@ Astuce : `gdb -tui ./3dmotor` affiche le code source pendant le débogage.
 
 ## ✅ Checklist de validation
 
-- [ ] Je sais expliquer la différence entre compilation et édition de liens.
-- [ ] Je sais dire, en lisant un message d'erreur, à quelle étape il s'est produit.
-- [ ] Mon projet a la structure `src/`, `include/`, `build/`.
-- [ ] `make`, `make clean`, `make fclean`, `make re` fonctionnent.
-- [ ] Un second `make` ne recompile rien ; modifier un seul `.c` ne recompile que lui.
-- [ ] Je compile avec `-Wall -Wextra -Werror -g` et j'ai **zéro** avertissement.
+- [x] Je sais expliquer la différence entre compilation et édition de liens.
+- [x] Je sais dire, en lisant un message d'erreur, à quelle étape il s'est produit.
+- [x] Mon projet a la structure `src/`, `include/`, `build/`.
+- [x] `make`, `make clean`, `make fclean`, `make re` fonctionnent.
+- [x] Un second `make` ne recompile rien ; modifier un seul `.c` ne recompile que lui.
+- [x] Je compile avec `-Wall -Wextra -Werror -g` et j'ai **zéro** avertissement.
 - [ ] Mes headers ont des include guards.
-- [ ] J'ai lancé mon programme dans `gdb`, posé un breakpoint et affiché une variable.
-- [ ] `build/` et l'exécutable sont ignorés par git ; j'ai fait un commit.
+- [x] J'ai lancé mon programme dans `gdb`, posé un breakpoint et affiché une variable.
+- [x] `build/` et l'exécutable sont ignorés par git ; j'ai fait un commit.
 
 [← Sommaire](README.md) · [Étape suivante →](02-carte-ascii-et-joueur.md)

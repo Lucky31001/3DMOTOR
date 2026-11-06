@@ -1,8 +1,9 @@
-#include<stdio.h>
+#include"map.h"
 #include"utils.h"
 
 int main(){
-    printf("3DMOTOR v0.1 — bonjour !\n");
-    printf("2 + 3 = %i", add(2, 3));
+    t_game_state game_state;
+    build_map(game_state);
+    print_map(game_state);
     return 0;
 }

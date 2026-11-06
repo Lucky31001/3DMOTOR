@@ -1,6 +1,6 @@
 NAME=3dmotor
 CC=gcc
-CFLAGS=-Wall -Wextra -Werror -g -Iinclude
+CFLAGS=-Wall -Wextra -Werror -g -Iinclude -lm
 
 SRC_DIR=src
 OBJ_DIR=build
