@@ -1,6 +1,6 @@
 NAME=3dmotor
 CC=gcc
-CFLAGS=-Wall -Wextra -Werror -g -Iinclude -lm
+CFLAGS=-Wall -Wextra -Werror -g -Iinclude
 
 SRC_DIR=src
 OBJ_DIR=build
@@ -11,7 +11,7 @@ OBJS=$(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS) )
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $^ -o $@
+	$(CC) $^ -o $@ -lm
 	
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 	mkdir -p $(OBJ_DIR)
