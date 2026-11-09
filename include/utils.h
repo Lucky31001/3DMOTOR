@@ -22,4 +22,12 @@ typedef enum e_wall{
     WALL
 } t_wall;
 
+typedef enum e_game_input{
+    UP = 'Z',
+    LEFT = 'Q',
+    DOWN = 'S',
+    RIGHT = 'D',
+    EXIT = 'X',
+} t_game_input;
+
 #endif
