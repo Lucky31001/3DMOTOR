@@ -28,7 +28,25 @@ void print_map(t_game_state *game_state){
             }
             else if (x == player_pos_x && y == player_pos_y )
             {
-                printf(">");
+                if (fabs(game_state->player->dir_x) > fabs(game_state->player->dir_y))
+                {
+                    if (game_state->player->dir_x < 0 ){
+                        printf("<");
+                    }
+                    else {
+                        printf(">");
+                    }
+                }
+                else
+                {
+                    if (game_state->player->dir_y < 0){
+                        printf("^");
+                    }
+                    else
+                    {
+                        printf("V");
+                    }
+                }
             }
             else
             {
@@ -38,5 +56,6 @@ void print_map(t_game_state *game_state){
         printf("\n");
     }
 
-    printf("position = (%.2f, %.2f)\ndirection = east\n", game_state->player->pos_x, game_state->player->pos_y);
+    printf("position = (%.2f, %.2f)\n", game_state->player->pos_x, game_state->player->pos_y);
+    printf("direction = east\n");
 }

@@ -6,7 +6,7 @@
 #include"player.h"
 
 int main(void){
-    t_player player;
+    t_player player = { .dir_x = 0, .dir_y = 0};
     t_game_state game_state = { .player = &player};
 
     build_map(&game_state);
@@ -16,6 +16,7 @@ int main(void){
     while (running)
     {
         printf("\033[2J");
+        printf("\033[H");
         print_map(&game_state);
 
         char mouvement;
