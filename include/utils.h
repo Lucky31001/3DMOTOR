@@ -4,6 +4,9 @@
 #define MAP_WIDTH 16
 #define MAP_HEIGHT 10
 
+#define MOVE 1
+#define ROTATE M_PI/2
+
 typedef struct s_player
 {
     double pos_x;

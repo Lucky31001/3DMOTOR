@@ -19,8 +19,6 @@ void build_map(t_game_state *game_state){
 void print_map(t_game_state *game_state){
     int player_pos_x = (int)floor(game_state->player->pos_x);
     int player_pos_y = (int)floor(game_state->player->pos_y);
-    // "." for void
-    // "#" for a wall
     for(int y = 0; y < MAP_HEIGHT; y++){
         for(int x = 0; x < MAP_WIDTH; x++){
             if (game_state->map[y][x] == 1){
@@ -57,5 +55,5 @@ void print_map(t_game_state *game_state){
     }
 
     printf("position = (%.2f, %.2f)\n", game_state->player->pos_x, game_state->player->pos_y);
-    printf("direction = east\n");
+    printf("direction = (%.2f, %.2f)\n", game_state->player->dir_x, game_state->player->dir_y);
 }
