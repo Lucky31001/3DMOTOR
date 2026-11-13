@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdbool.h>
 #include"map.h"
 #include"utils.h"
 #include <math.h>
@@ -14,13 +15,17 @@ void build_map(t_game_state *game_state){
             }
         }
     }
+
+    game_state->map[6][11] = WALL;
+    game_state->map[5][6] = WALL;
+    game_state->map[8][8] = WALL;
+    game_state->map[3][8] = WALL;
+    game_state->map[5][11] = WALL;
 }
 
 void print_map(t_game_state *game_state){
     int player_pos_x = (int)floor(game_state->player->pos_x);
     int player_pos_y = (int)floor(game_state->player->pos_y);
-    // "." for void
-    // "#" for a wall
     for(int y = 0; y < MAP_HEIGHT; y++){
         for(int x = 0; x < MAP_WIDTH; x++){
             if (game_state->map[y][x] == 1){
@@ -28,7 +33,25 @@ void print_map(t_game_state *game_state){
             }
             else if (x == player_pos_x && y == player_pos_y )
             {
-                printf(">");
+                if (fabs(game_state->player->dir_x) > fabs(game_state->player->dir_y))
+                {
+                    if (game_state->player->dir_x < 0 ){
+                        printf("<");
+                    }
+                    else {
+                        printf(">");
+                    }
+                }
+                else
+                {
+                    if (game_state->player->dir_y < 0){
+                        printf("^");
+                    }
+                    else
+                    {
+                        printf("V");
+                    }
+                }
             }
             else
             {
@@ -38,5 +61,12 @@ void print_map(t_game_state *game_state){
         printf("\n");
     }
 
-    printf("position = (%.2f, %.2f)\ndirection = east\n", game_state->player->pos_x, game_state->player->pos_y);
+    printf("position = (%.2f, %.2f)\n", game_state->player->pos_x, game_state->player->pos_y);
+    printf("direction = (%.2f, %.2f)\n", game_state->player->dir_x, game_state->player->dir_y);
+    printf("longueur de la direction = %.2f\n", sqrt(game_state->player->dir_x * game_state->player->dir_x + game_state->player->dir_y * game_state->player->dir_y));
+}
+
+bool is_wall(t_game_state *game_state, double x, double y){
+    if ((x < 0 || x >= MAP_WIDTH) || (y < 0 || y >= MAP_HEIGHT)) return true;
+    return game_state->map[(int)floor(y)][(int)floor(x)] == WALL;
 }
