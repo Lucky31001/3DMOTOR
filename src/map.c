@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdbool.h>
 #include"map.h"
 #include"utils.h"
 #include <math.h>
@@ -62,5 +63,10 @@ void print_map(t_game_state *game_state){
 
     printf("position = (%.2f, %.2f)\n", game_state->player->pos_x, game_state->player->pos_y);
     printf("direction = (%.2f, %.2f)\n", game_state->player->dir_x, game_state->player->dir_y);
-    printf("longueur de la direction = %.f\n", sqrt(game_state->player->dir_x * game_state->player->dir_x + game_state->player->dir_y * game_state->player->dir_y));
+    printf("longueur de la direction = %.2f\n", sqrt(game_state->player->dir_x * game_state->player->dir_x + game_state->player->dir_y * game_state->player->dir_y));
+}
+
+bool is_wall(t_game_state *game_state, double x, double y){
+    if ((x < 0 || x >= MAP_WIDTH) || (y < 0 || y >= MAP_HEIGHT)) return true;
+    return game_state->map[(int)floor(y)][(int)floor(x)] == WALL;
 }

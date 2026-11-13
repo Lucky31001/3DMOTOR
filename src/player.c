@@ -1,6 +1,7 @@
 #include<math.h>
 #include"player.h"
 #include"utils.h"
+#include"map.h"
 
 void build_player(t_game_state *game_state){
     game_state->player->pos_y = MAP_HEIGHT/2 + 0.5;
@@ -17,11 +18,14 @@ void rotate_player(t_game_state *game_state, double angle){
 
 void move_player(t_game_state *game_state, double deplacement){
 
-    double player_pos_x = game_state->player->pos_x + game_state->player->dir_x * deplacement;
-    double player_pos_y = game_state->player->pos_y + game_state->player->dir_y * deplacement;
+    double wanted_player_pos_x = game_state->player->pos_x + game_state->player->dir_x * deplacement;
+    double wanted_player_pos_y = game_state->player->pos_y + game_state->player->dir_y * deplacement;
 
-    if (game_state->map[(int)floor(player_pos_y)][(int)floor(player_pos_x)] == VOID){
-        game_state->player->pos_x = player_pos_x;
-        game_state->player->pos_y = player_pos_y;
+    if (!is_wall(game_state, game_state->player->pos_x, wanted_player_pos_y)){
+        game_state->player->pos_y = wanted_player_pos_y;
     }
+    if (!is_wall(game_state, wanted_player_pos_x, game_state->player->pos_y)){
+        game_state->player->pos_x = wanted_player_pos_x;
+    }
+    
 }
