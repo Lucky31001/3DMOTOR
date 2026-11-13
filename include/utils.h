@@ -6,6 +6,9 @@
 
 #define MOVE 1
 
+#include<termios.h>
+#include<stdbool.h>
+
 typedef struct s_player
 {
     double pos_x;
@@ -20,6 +23,13 @@ typedef struct s_game_state
     int map[MAP_HEIGHT][MAP_WIDTH];
     t_player *player;
 } t_game_state;
+
+typedef struct s_terminal
+{
+    struct termios origin;
+    struct termios custom;
+    bool success;
+} t_terminal;
 
 typedef enum e_wall{
     VOID,

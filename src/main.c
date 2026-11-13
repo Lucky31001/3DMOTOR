@@ -5,15 +5,18 @@
 #include"utils.h"
 #include"map.h"
 #include"player.h"
+#include"terminal.h"
 
 int main(void){
-    t_player player = { .dir_x = 0, .dir_y = 0};
+    t_player player;
+    t_terminal terminal;
     t_game_state game_state = { .player = &player};
 
     build_map(&game_state);
     build_player(&game_state);
     
     bool running = true;
+    set_terminal(&terminal);
     while (running)
     {
         printf("\033[2J");
@@ -22,7 +25,7 @@ int main(void){
 
         char mouvement;
         printf("Choose a mouvement (%c%c%c%c to move, %c to exit) : ", UP, LEFT, DOWN, RIGHT, EXIT);
-        scanf(" %c", &mouvement);
+        scanf("%c", &mouvement);
         if (toupper(mouvement) == EXIT){
             running = false;
         }
@@ -44,7 +47,7 @@ int main(void){
             break;
         }
     }
-    
+    reset_terminal(&terminal);
     
     return 0;
 }
