@@ -1,6 +1,7 @@
 #include<stdio.h>
-#include <stdbool.h>
-#include <ctype.h>
+#include<stdbool.h>
+#include<ctype.h>
+#include<math.h>
 #include"utils.h"
 #include"map.h"
 #include"player.h"
@@ -25,7 +26,23 @@ int main(void){
         if (toupper(mouvement) == EXIT){
             running = false;
         }
-        move_player(&game_state, toupper(mouvement));
+        switch (toupper(mouvement))
+        {
+        case UP:
+            move_player(&game_state, MOVE);
+            break;
+        case LEFT:
+            rotate_player(&game_state, -M_PI/100);
+            break;
+        case DOWN:
+            move_player(&game_state, -MOVE);
+            break;
+        case RIGHT:
+            rotate_player(&game_state, M_PI/100);
+            break;
+        default:
+            break;
+        }
     }
     
     

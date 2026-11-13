@@ -15,34 +15,12 @@ void rotate_player(t_game_state *game_state, double angle){
     game_state->player->dir_y = new_y;
 }
 
-void move_player(t_game_state *game_state, char move){
-    double deplacement = 0;
-    switch (move)
-        {
-        case UP:
-            deplacement = MOVE;
-            break;
-        case LEFT:
-            rotate_player(game_state, ROTATE);
-            break;
-        case DOWN:
-            deplacement = -MOVE;
-            break;
-        case RIGHT:
-            rotate_player(game_state, -ROTATE);
-            break;
-        default:
-            break;
-        }
-    
+void move_player(t_game_state *game_state, double deplacement){
+
     double player_pos_x = game_state->player->pos_x + game_state->player->dir_x * deplacement;
     double player_pos_y = game_state->player->pos_y + game_state->player->dir_y * deplacement;
 
     if (game_state->map[(int)floor(player_pos_y)][(int)floor(player_pos_x)] == VOID){
-
-        game_state->player->dir_x = player_pos_x - game_state->player->pos_x;
-        game_state->player->dir_y = player_pos_y - game_state->player->pos_y;
-        
         game_state->player->pos_x = player_pos_x;
         game_state->player->pos_y = player_pos_y;
     }

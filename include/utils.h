@@ -5,7 +5,6 @@
 #define MAP_HEIGHT 10
 
 #define MOVE 1
-#define ROTATE M_PI/2
 
 typedef struct s_player
 {

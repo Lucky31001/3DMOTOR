@@ -5,5 +5,7 @@
 
 void build_player(t_game_state *game_state);
 
-void move_player(t_game_state *game_state, char move);
+void rotate_player(t_game_state *game_input, double angle);
+
+void move_player(t_game_state *game_state, double deplacement);
 #endif
