@@ -14,6 +14,12 @@ void build_map(t_game_state *game_state){
             }
         }
     }
+
+    game_state->map[6][11] = WALL;
+    game_state->map[5][6] = WALL;
+    game_state->map[8][8] = WALL;
+    game_state->map[3][8] = WALL;
+    game_state->map[5][11] = WALL;
 }
 
 void print_map(t_game_state *game_state){
@@ -56,4 +62,5 @@ void print_map(t_game_state *game_state){
 
     printf("position = (%.2f, %.2f)\n", game_state->player->pos_x, game_state->player->pos_y);
     printf("direction = (%.2f, %.2f)\n", game_state->player->dir_x, game_state->player->dir_y);
+    printf("longueur de la direction = %.f\n", sqrt(game_state->player->dir_x * game_state->player->dir_x + game_state->player->dir_y * game_state->player->dir_y));
 }
